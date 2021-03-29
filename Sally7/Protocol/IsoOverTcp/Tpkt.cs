@@ -6,6 +6,14 @@ namespace Sally7.Protocol.IsoOverTcp
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct Tpkt
     {
+        /// <summary>
+        /// The size of the <see cref="Tpkt"/> struct.
+        /// </summary>
+        public const int Size =
+            sizeof(byte) + // Version
+            sizeof(byte) + // Reserved
+            BigEndianShort.Size; // Length
+
         private const byte IsoVersion = 3;
 
         public byte Version;
